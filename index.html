@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestro Calendario con Amor</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        #photoContainer {
+            width: 300px; /* Aumentar el ancho del contenedor */
+            height: 200px; /* Mantener la altura */
+            overflow: hidden; /* Ocultar partes que excedan el contenedor */
+            position: relative;
+            cursor: pointer;
+            margin: 0 auto; /* Centrar el contenedor */
+        }
+
+        #photoContainer img {
+            
+            height: 100%;
+            object-fit: cover; /* Ajustar la imagen al contenedor */
+            transition: transform 0.3s ease; /* Animación al hacer hover */
+        }
+
+        #photoContainer:hover img {
+            transform: scale(1.1); /* Ampliar ligeramente al pasar el mouse */
+        }
+
+        #photoModal {
+            display: none; /* Ocultar por defecto */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8); /* Fondo oscuro */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #photoModal img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain; /* Mostrar la imagen completa */
+            border: 5px solid white; /* Agregar un borde blanco */
+            border-radius: 10px; /* Bordes redondeados */
+        }
+
+        .emoji {
+            position: absolute;
+            font-size: 2rem;
+            cursor: grab;
+            user-select: none;
+        }
+
+        .emoji-left {
+            left: 10px;
+            top: 10%;
+        }
+
+        .emoji-right {
+            right: 10px;
+            top: 10%;
+        }
+
+        .emoji + .emoji {
+            margin-top: 1rem; /* Separación entre emoticones */
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-pink-100 to-purple-200 text-gray-800 p-4 sm:p-8 flex flex-col items-center justify-center relative">
+
+    <!-- Letras flotantes -->
+    <div class="floating-letter floating-e-1">E</div>
+    <div class="floating-letter floating-r-1">R</div>
+    <div class="floating-letter floating-e-2">E</div>
+    <div class="floating-letter floating-r-2">R</div>
+    <div class="floating-letter floating-e-3">E</div>
+    <div class="floating-letter floating-r-3">R</div>
+    <div class="floating-letter floating-e-4">E</div>
+    <div class="floating-letter floating-r-4">R</div>
+    <div class="floating-letter floating-e-5">E</div>
+    <div class="floating-letter floating-r-5">R</div>
+    <div class="floating-letter floating-e-6">E</div>
+    <div class="floating-letter floating-r-6">R</div>
+
+    <!-- Corazones que caen -->
+    <div class="falling-heart falling-heart-1">💖</div>
+    <div class="falling-heart falling-heart-2">❤️</div>
+    <div class="falling-heart falling-heart-3">💖</div>
+    <div class="falling-heart falling-heart-4">❤️</div>
+    <div class="falling-heart falling-heart-5">💖</div>
+    <div class="falling-heart falling-heart-6">❤️</div>
+    <div class="falling-heart falling-heart-7">💖</div>
+    <div class="falling-heart falling-heart-8">❤️</div>
+    <div class="falling-heart falling-heart-9">💖</div>
+    <div class="falling-heart falling-heart-10">❤️</div>
+    <div class="falling-heart falling-heart-11">💖</div>
+    <div class="falling-heart falling-heart-12">❤️</div>
+    <div class="falling-heart falling-heart-13">💖</div>
+    <div class="falling-heart falling-heart-14">❤️</div>
+    <div class="falling-heart falling-heart-15">💖</div>
+    <div class="falling-heart falling-heart-16">❤️</div>
+    <div class="falling-heart falling-heart-17">💖</div>
+    <div class="falling-heart falling-heart-18">❤️</div>
+    <div class="falling-heart falling-heart-19">💖</div>
+    <div class="falling-heart falling-heart-20">❤️</div>
+    <div class="falling-heart falling-heart-21">💖</div>
+    <div class="falling-heart falling-heart-22">❤️</div>
+    <div class="falling-heart falling-heart-23">💖</div>
+    <div class="falling-heart falling-heart-24">❤️</div>
+    <div class="falling-heart falling-heart-25">💖</div>
+    <div class="falling-heart falling-heart-26">❤️</div>
+    <div class="falling-heart falling-heart-27">💖</div>
+    <div class="falling-heart falling-heart-28">❤️</div>
+    <div class="falling-heart falling-heart-29">💖</div>
+    <div class="falling-heart falling-heart-30">❤️</div>
+    <div class="falling-heart falling-heart-31">💖</div>
+    <div class="falling-heart falling-heart-32">❤️</div>
+    <div class="falling-heart falling-heart-33">💖</div>
+    <div class="falling-heart falling-heart-34">❤️</div>
+    <div class="falling-heart falling-heart-35">💖</div>
+    <div class="falling-heart falling-heart-36">❤️</div>
+    <div class="falling-heart falling-heart-37">💖</div>
+    <div class="falling-heart falling-heart-38">❤️</div>
+
+    <!-- Corazones palpitantes -->
+    <div class="pulsating-heart pulsating-heart-1">❤️</div>
+    <div class="pulsating-heart pulsating-heart-2">💖</div>
+    <div class="pulsating-heart pulsating-heart-3">❤️</div>
+    <div class="pulsating-heart pulsating-heart-4">💖</div>
+    <div class="pulsating-heart pulsating-heart-5">❤️</div>
+    <div class="pulsating-heart pulsating-heart-6">💖</div>
+    <div class="pulsating-heart pulsating-heart-7">❤️</div>
+    <div class="pulsating-heart pulsating-heart-8">💖</div>
+    <div class="pulsating-heart pulsating-heart-9">❤️</div>
+    <div class="pulsating-heart pulsating-heart-10">💖</div>
+
+    <!-- Título y subtítulo romántico -->
+    <div class="text-center mb-8 relative z-10">
+        <h1 class="text-4xl sm:text-5xl font-bold text-pink-700 drop-shadow-lg mb-2">
+            Nuestro Calendario con Amor &lt;3
+        </h1>
+        <p class="text-lg sm:text-xl text-purple-700">
+            Un pequeño recordatorio de nuestros momentos especiales, Estefany.
+        </p>
+    </div>
+
+    <!-- Contenedor principal del calendario y contenido -->
+    <div class="bg-white rounded-3xl shadow-2xl p-6 sm:p-10 max-w-4xl w-full flex flex-col lg:flex-row gap-8 relative z-10">
+        <!-- Sección del Calendario -->
+        <div class="flex-1 bg-gradient-to-br from-purple-50 to-pink-100 rounded-2xl p-6 shadow-inner">
+            <div class="flex justify-between items-center mb-6">
+                <button id="prevMonth" class="p-3 rounded-full bg-pink-400 hover:bg-pink-500 text-white shadow-md transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-pink-300" aria-label="Mes anterior">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <h2 id="currentMonthYear" class="text-2xl sm:text-3xl font-semibold text-purple-700"></h2>
+                <button id="nextMonth" class="p-3 rounded-full bg-pink-400 hover:bg-pink-500 text-white shadow-md transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-pink-300" aria-label="Mes siguiente">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Días de la semana -->
+            <div class="grid grid-cols-7 gap-2 text-center text-sm sm:text-base font-medium text-purple-600 mb-4">
+                <div>Dom</div>
+                <div>Lun</div>
+                <div>Mar</div>
+                <div>Mié</div>
+                <div>Jue</div>
+                <div>Vie</div>
+                <div>Sáb</div>
+            </div>
+
+            <!-- Días del mes -->
+            <div id="calendarDays" class="grid grid-cols-7 gap-2 text-center">
+                <!-- Los días se renderizarán aquí por JavaScript -->
+            </div>
+        </div>
+
+        <!-- Sección de Contenido Revelado -->
+        <div id="revealedContentSection" class="flex-1 bg-gradient-to-br from-blue-50 to-green-100 rounded-2xl p-6 shadow-inner flex flex-col justify-center items-center text-center">
+            <div id="initialContent" class="text-center text-gray-500">
+                <p class="text-xl sm:text-2xl mb-4">
+                    Selecciona una fecha en el calendario para ver si hay un mensaje especial.
+                </p>
+                <p class="text-md sm:text-lg">
+                    (Solo se revelarán los mensajes de fechas pasadas o del día actual)
+                </p>
+                <span class="text-6xl mt-4">💖</span>
+            </div>
+            <div id="dynamicContent" class="hidden">
+                <h3 id="romanticTitle" class="text-2xl sm:text-3xl font-semibold text-blue-700 mb-4"></h3>
+                <p id="messageContent" class="text-lg sm:text-xl text-gray-700 mb-6 leading-relaxed"></p>
+                <div id="photoContainer" class="w-full max-w-sm sm:max-w-md rounded-xl shadow-lg border-4 border-blue-300 hidden">
+                    <img id="messagePhoto" class="w-full h-auto object-cover" alt="Foto especial" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para imagen completa -->
+    <div id="photoModal" class="flex">
+        <div class="emoji emoji-left" draggable="true">💖</div>
+        <div class="emoji emoji-left" draggable="true">❤️</div>
+        <div class="emoji emoji-left" draggable="true">🌟</div>
+        <div class="emoji emoji-left" draggable="true">🎉</div>
+        <div class="emoji emoji-right" draggable="true">✨</div>
+        <div class="emoji emoji-right" draggable="true">💐</div>
+        <div class="emoji emoji-right" draggable="true">🎶</div>
+        <div class="emoji emoji-right" draggable="true">🌹</div>
+        <img id="modalImage" src="" alt="Imagen completa" />
+    </div>
+
+    <script src="js/script.js" defer></script>
+    <script>
+        const photoContainer = document.getElementById('photoContainer');
+        const photoModal = document.getElementById('photoModal');
+        const modalImage = document.getElementById('modalImage');
+
+        photoContainer.addEventListener('click', () => {
+            const imgSrc = document.getElementById('messagePhoto').src;
+            modalImage.src = imgSrc;
+            photoModal.style.display = 'flex';
+        });
+
+        photoModal.addEventListener('click', (e) => {
+            if (e.target === photoModal) {
+                photoModal.style.display = 'none';
+            }
+        });
+
+        const emojis = document.querySelectorAll('.emoji');
+        const modalImageElement = document.getElementById('modalImage');
+
+        emojis.forEach(emoji => {
+            emoji.addEventListener('dragstart', (e) => {
+                e.dataTransfer.setData('text/plain', emoji.textContent);
+            });
+        });
+
+        modalImageElement.addEventListener('dragover', (e) => {
+            e.preventDefault();
+        });
+
+        modalImageElement.addEventListener('drop', (e) => {
+            e.preventDefault();
+            const emoji = e.dataTransfer.getData('text/plain');
+            const span = document.createElement('span');
+            span.textContent = emoji;
+            span.style.position = 'absolute';
+            span.style.left = `${e.offsetX}px`;
+            span.style.top = `${e.offsetY}px`;
+            span.style.fontSize = '2rem';
+            modalImageElement.parentElement.appendChild(span);
+        });
+    </script>
+</body>
+</html>

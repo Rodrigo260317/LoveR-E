@@ -1,0 +1,134 @@
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;  
+            overflow: hidden;
+            height: 100vh;
+
+        }
+
+        @keyframes floatE {
+          0% { transform: translateY(0px) translateX(0px) rotate(5deg); opacity: 0.8; }
+          25% { transform: translateY(-30px) translateX(25px) rotate(15deg); opacity: 0.85; }
+          50% { transform: translateY(0px) translateX(0px) rotate(5deg); opacity: 0.8; }
+          75% { transform: translateY(30px) translateX(-25px) rotate(-5deg); opacity: 0.85; }
+          100% { transform: translateY(0px) translateX(0px) rotate(5deg); opacity: 0.8; }
+        }
+
+        @keyframes floatR {
+          0% { transform: translateY(0px) translateX(0px) rotate(-5deg); opacity: 0.8; }
+          25% { transform: translateY(30px) translateX(-25px) rotate(-15deg); opacity: 0.85; }
+          50% { transform: translateY(0px) translateX(0px) rotate(-5deg); opacity: 0.8; }
+          75% { transform: translateY(-30px) translateX(25px) rotate(5deg); opacity: 0.85; }
+          100% { transform: translateY(0px) translateX(0px) rotate(-5deg); opacity: 0.8; }
+        }
+
+        @keyframes fallHeart {
+          0% { transform: translateY(-100vh) translateX(var(--tw-translate-x, 0)) rotate(0deg); opacity: 0; }
+          5% { opacity: 0.5; }
+          100% { transform: translateY(110vh) translateX(var(--tw-translate-x, 0)) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes pulseHeart {
+          0% { transform: scale(0.9); opacity: 0.6; }
+          50% { transform: scale(1.1); opacity: 0.8; }
+          100% { transform: scale(0.9); opacity: 0.6; }
+        }
+
+        .floating-letter {
+          position: absolute;
+          font-family: 'Inter', sans-serif;
+          font-size: clamp(9rem, 20vw, 14rem);
+          font-weight: bold;
+          color: #FF69B4;
+          opacity: 0.8;
+          pointer-events: none;
+          z-index: 0;
+          text-shadow: 4px 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .falling-heart {
+          position: absolute;
+          font-size: clamp(2.5rem, 6vw, 5rem);
+          color: #FFC0CB;
+          opacity: 0;
+          pointer-events: none;
+          z-index: 0;
+          animation: fallHeart linear infinite;
+        }
+
+        .pulsating-heart {
+          position: absolute;
+          font-size: clamp(3rem, 7vw, 6rem);
+          color: #FF69B4;
+          opacity: 0.6;
+          pointer-events: none;
+          z-index: 5;
+          animation: pulseHeart 3s infinite ease-in-out;
+        }
+
+        /* Posiciones y animaciones para letras (más dispersas y con menos instancias) */
+        .floating-e-1 { top: 3%; left: 3%; animation-duration: 18s; animation-delay: 0s; transform: rotate(7deg); }
+        .floating-r-1 { bottom: 8%; right: 5%; animation-duration: 21s; animation-delay: 1s; transform: rotate(-10deg); }
+        .floating-e-2 { top: 40%; left: 70%; animation-duration: 20s; animation-direction: reverse; animation-delay: 2s; transform: rotate(15deg); }
+        .floating-r-2 { top: 20%; right: 10%; animation-duration: 19s; animation-delay: 3s; transform: rotate(-5deg); }
+        .floating-e-3 { bottom: 67%; left: 30%; animation-duration: 23s; animation-delay: 4s; transform: rotate(18deg); }
+        .floating-r-3 { top: 10%; left: 35%; animation-duration: 22s; animation-direction: reverse; animation-delay: 5s; transform: rotate(-15deg); }
+        .floating-e-4 { bottom:  65%; right: 3%; animation-duration: 19s; animation-delay: 6s; transform: rotate(10deg); }
+        .floating-r-4 { top: 75%; left: 5%; animation-duration: 17s; animation-delay: 7s; transform: rotate(-8deg); }
+        .floating-e-5 { top: 35%; left: 5%; animation-duration: 21s; animation-delay: 8s; transform: rotate(20deg); }
+        .floating-r-5 { bottom: 3%; right: 35%; animation-duration: 20s; animation-delay: 9s; animation-direction: reverse; transform: rotate(-12deg); }
+        .floating-e-6 { top: 72%; left: 40%; animation-duration: 19s; animation-delay: 12s; transform: rotate(13deg); }
+        .floating-r-6 { top: 0%; right: 25%; animation-duration: 17s; animation-delay: 13s; animation-direction: reverse; transform: rotate(-9deg); }
+
+        /* Posiciones y animaciones para corazones que caen (más instancias y variaciones) */
+        .falling-heart-1 { left: 10%; animation-duration: 12s; animation-delay: 0s; --tw-translate-x: 5px; }
+        .falling-heart-2 { left: 20%; animation-duration: 15s; animation-delay: 1s; --tw-translate-x: -10px; }
+        .falling-heart-3 { left: 30%; animation-duration: 10s; animation-delay: 2s; --tw-translate-x: 15px; }
+        .falling-heart-4 { left: 40%; animation-duration: 13s; animation-delay: 3s; --tw-translate-x: -5px; }
+        .falling-heart-5 { left: 50%; animation-duration: 11s; animation-delay: 4s; --tw-translate-x: 10px; }
+        .falling-heart-6 { left: 60%; animation-duration: 14s; animation-delay: 5s; --tw-translate-x: -15px; }
+        .falling-heart-7 { left: 70%; animation-duration: 16s; animation-delay: 6s; --tw-translate-x: 8px; }
+        .falling-heart-8 { left: 80%; animation-duration: 9s; animation-delay: 7s; --tw-translate-x: -12px; }
+        .falling-heart-9 { left: 5%; animation-duration: 11s; animation-delay: 8s; --tw-translate-x: 20px; }
+        .falling-heart-10 { left: 25%; animation-duration: 14s; animation-delay: 9s; --tw-translate-x: -20px; }
+        .falling-heart-11 { left: 45%; animation-duration: 10s; animation-delay: 10s; --tw-translate-x: 10px; }
+        .falling-heart-12 { left: 65%; animation-duration: 12s; animation-delay: 11s; --tw-translate-x: -5px; }
+        .falling-heart-13 { left: 85%; animation-duration: 15s; animation-delay: 12s; --tw-translate-x: 12px; }
+        .falling-heart-14 { left: 15%; animation-duration: 9s; animation-delay: 13s; --tw-translate-x: -8px; }
+        .falling-heart-15 { left: 35%; animation-duration: 13s; animation-delay: 14s; --tw-translate-x: 18px; }
+        .falling-heart-16 { left: 55%; animation-duration: 11s; animation-delay: 15s; --tw-translate-x: -10px; }
+        .falling-heart-17 { left: 75%; animation-duration: 14s; animation-delay: 16s; --tw-translate-x: 7px; }
+        .falling-heart-18 { left: 95%; animation-duration: 10s; animation-delay: 17s; --tw-translate-x: -14px; }
+        .falling-heart-19 { left: 12%; animation-duration: 13s; animation-delay: 18s; --tw-translate-x: 3px; }
+        .falling-heart-20 { left: 28%; animation-duration: 16s; animation-delay: 19s; --tw-translate-x: -7px; }
+        .falling-heart-21 { left: 42%; animation-duration: 11s; animation-delay: 20s; --tw-translate-x: 12px; }
+        .falling-heart-22 { left: 58%; animation-duration: 14s; animation-delay: 21s; --tw-translate-x: -9px; }
+        .falling-heart-23 { left: 72%; animation-duration: 10s; animation-delay: 22s; --tw-translate-x: 6px; }
+        .falling-heart-24 { left: 88%; animation-duration: 15s; animation-delay: 23s; --tw-translate-x: -11px; }
+        .falling-heart-25 { left: 7%; animation-duration: 9s; animation-delay: 24s; --tw-translate-x: 10px; }
+        .falling-heart-26 { left: 33%; animation-duration: 12s; animation-delay: 25s; --tw-translate-x: -13px; }
+        .falling-heart-27 { left: 63%; animation-duration: 17s; animation-delay: 26s; --tw-translate-x: 4px; }
+        .falling-heart-28 { left: 92%; animation-duration: 13s; animation-delay: 27s; --tw-translate-x: -6px; }
+        .falling-heart-29 { left: 18%; animation-duration: 10s; animation-delay: 28s; --tw-translate-x: 8px; }
+        .falling-heart-30 { left: 38%; animation-duration: 14s; animation-delay: 29s; --tw-translate-x: -10px; }
+        .falling-heart-31 { left: 52%; animation-duration: 12s; animation-delay: 30s; --tw-translate-x: 5px; }
+        .falling-heart-32 { left: 68%; animation-duration: 15s; animation-delay: 31s; --tw-translate-x: -12px; }
+        .falling-heart-33 { left: 82%; animation-duration: 11s; animation-delay: 32s; --tw-translate-x: 7px; }
+        .falling-heart-34 { left: 3%; animation-duration: 16s; animation-delay: 33s; --tw-translate-x: -15px; }
+        .falling-heart-35 { left: 23%; animation-duration: 9s; animation-delay: 34s; --tw-translate-x: 18px; }
+        .falling-heart-36 { left: 48%; animation-duration: 13s; animation-delay: 35s; --tw-translate-x: -4px; }
+        .falling-heart-37 { left: 78%; animation-duration: 10s; animation-delay: 36s; --tw-translate-x: 9px; }
+        .falling-heart-38 { left: 98%; animation-duration: 14s; animation-delay: 37s; --tw-translate-x: -11px; }
+
+        /* Posiciones para corazones palpitantes */
+        .pulsating-heart-1 { top: 10%; left: 10%; animation-delay: 0s; }
+        .pulsating-heart-2 { top: 20%; right: 15%; animation-delay: 0.5s; }
+        .pulsating-heart-3 { bottom: 10%; left: 20%; animation-delay: 1s; }
+        .pulsating-heart-4 { bottom: 20%; right: 10%; animation-delay: 1.5s; }
+        .pulsating-heart-5 { top: 40%; left: 40%; animation-delay: 2s; }
+        .pulsating-heart-6 { top: 60%; right: 40%; animation-delay: 2.5s; }
+        .pulsating-heart-7 { bottom: 30%; left: 50%; animation-delay: 3s; }
+        .pulsating-heart-8 { top: 5%; left: 80%; animation-delay: 3.5s; }
+        .pulsating-heart-9 { top: 80%; left: 25%; animation-delay: 4s; }
+        .pulsating-heart-10 { top: 50%; right: 5%; animation-delay: 4.5s; }
